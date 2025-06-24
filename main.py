@@ -142,23 +142,23 @@ def show_ai_train_window():
     main_frame.pack_forget()
     main_frame.pack(fill="both", expand=True)
 
-    # プロジェクト名入力
-    ctk.CTkLabel(master=main_frame, text="Project Name: プロジェクト名（半角英数）", font=("Roboto Medium", 18)).place(relx=0.2, rely=0.03, anchor=ctk.CENTER)
+    # 项目名称输入
+    ctk.CTkLabel(master=main_frame, text="Project Name: 项目名称（半角英数）", font=("Roboto Medium", 18)).place(relx=0.2, rely=0.03, anchor=ctk.CENTER)
     project_name_entry = ctk.CTkEntry(master=main_frame, placeholder_text="Project Name", width=250, height=50, font=("Roboto Medium", 18))
     project_name_entry.place(relx=0.2, rely=0.06, relwidth=0.3, relheight=0.04, anchor=ctk.CENTER)
 
-    # トレーニングデータ選択ボタン
-    ctk.CTkLabel(master=main_frame, text="Select Train data: 学習データの選択", font=("Roboto Medium", 18)).place(relx=0.2, rely=0.10, anchor=ctk.CENTER)
+    # 训练数据选择按钮
+    ctk.CTkLabel(master=main_frame, text="Select Train data: 学习数据的选择", font=("Roboto Medium", 18)).place(relx=0.2, rely=0.10, anchor=ctk.CENTER)
     train_data_button = ctk.CTkButton(master=main_frame, text="Select Train Data", command=select_train_data, border_color='black', border_width=2, font=("Roboto Medium", 24), text_color='white')
     train_data_button.place(relx=0.2, rely=0.13, relwidth=0.3, relheight=0.04, anchor=ctk.CENTER)
 
-    # モデル保存先選択ボタン
-    ctk.CTkLabel(master=main_frame, text="Select Save Folder: モデルの保存先の選択", font=("Roboto Medium", 18)).place(relx=0.2, rely=0.17, anchor=ctk.CENTER)
+    # 模型保存位置选择按钮
+    ctk.CTkLabel(master=main_frame, text="Select Save Folder: 模型保存位置的选择", font=("Roboto Medium", 18)).place(relx=0.2, rely=0.17, anchor=ctk.CENTER)
     model_save_button = ctk.CTkButton(master=main_frame, text="Select Model's Save Folder", command=select_model_save_folder, border_color='black', border_width=2, font=("Roboto Medium", 24), text_color='white')
     model_save_button.place(relx=0.2, rely=0.2, relwidth=0.3, relheight=0.04, anchor=ctk.CENTER)
 
-    # モデル選択ドロップダウン
-    ctk.CTkLabel(master=main_frame, text="Select YOLO Model: YOLOのモデル選択", font=("Roboto Medium", 18)).place(relx=0.2, rely=0.26, anchor=ctk.CENTER)
+    # 模型选择下拉菜单
+    ctk.CTkLabel(master=main_frame, text="Select YOLO Model: YOLO的模型选择", font=("Roboto Medium", 18)).place(relx=0.2, rely=0.26, anchor=ctk.CENTER)
     model_options = ["YOLOv8-Nano", "YOLOv8-Small", "YOLOv8-Medium", "YOLOv8-Large", "YOLOv8-ExtraLarge", 
                      "YOLOv9-Compact", "YOLOv9-Enhanced",
                      "YOLOv10-Nano", "YOLOv10-Small", "YOLOv10-Medium", "YOLOv10-Balanced", "YOLOv10-Large", "YOLOv10-ExtraLarge",
@@ -181,35 +181,35 @@ def show_ai_train_window():
     )
     model_menu.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
 
-    # CNNの入力層のサイズ指定
-    ctk.CTkLabel(master=main_frame, text="CNN Input Size: CNNの入力層のサイズ 【Ex: 640】", font=("Roboto Medium", 18)).place(relx=0.2, rely=0.39, anchor=ctk.CENTER)
+    # CNN输入层尺寸指定
+    ctk.CTkLabel(master=main_frame, text="CNN Input Size: CNN输入层的尺寸 【例: 640】", font=("Roboto Medium", 18)).place(relx=0.2, rely=0.39, anchor=ctk.CENTER)
     input_size_entry = ctk.CTkEntry(master=main_frame, placeholder_text="Input Size", font=("Roboto Medium", 18))
     input_size_entry.place(relx=0.2, rely=0.42, relwidth=0.3, relheight=0.04, anchor=ctk.CENTER)
 
-    # エポック数
-    ctk.CTkLabel(master=main_frame, text="Epochs: エポック数 【Ex: 100】", font=("Roboto Medium", 18)).place(relx=0.2, rely=0.46, anchor=ctk.CENTER)
+    # 训练轮数
+    ctk.CTkLabel(master=main_frame, text="Epochs: 训练轮数 【例: 100】", font=("Roboto Medium", 18)).place(relx=0.2, rely=0.46, anchor=ctk.CENTER)
     epochs_entry = ctk.CTkEntry(master=main_frame, placeholder_text="Epochs", font=("Roboto Medium", 18))
     epochs_entry.place(relx=0.2, rely=0.49, relwidth=0.3, relheight=0.04, anchor=ctk.CENTER)
 
-    # バッチサイズ
-    ctk.CTkLabel(master=main_frame, text="Batch Size: バッチサイズ 【Ex: 16】", font=("Roboto Medium", 18)).place(relx=0.2, rely=0.53, anchor=ctk.CENTER)
+    # 批处理大小
+    ctk.CTkLabel(master=main_frame, text="Batch Size: 批处理大小 【例: 16】", font=("Roboto Medium", 18)).place(relx=0.2, rely=0.53, anchor=ctk.CENTER)
     batch_size_entry = ctk.CTkEntry(master=main_frame, placeholder_text="Batch size", font=("Roboto Medium", 18))
     batch_size_entry.place(relx=0.2, rely=0.56, relwidth=0.3, relheight=0.04, anchor=ctk.CENTER)
 
-    # クラス名入力ウィンドウ
-    ctk.CTkLabel(master=main_frame, text="Class name: クラス名", font=("Roboto Medium", 18)).place(relx=0.2, rely=0.60, anchor=ctk.CENTER)
+    # 类别名称输入窗口
+    ctk.CTkLabel(master=main_frame, text="Class name: 类别名称", font=("Roboto Medium", 18)).place(relx=0.2, rely=0.60, anchor=ctk.CENTER)
     class_names_text = ctk.CTkTextbox(master=main_frame, font=("Roboto Medium", 18))
     class_names_text.place(relx=0.2, rely=0.7, relwidth=0.3, relheight=0.17,  anchor=ctk.CENTER)
 
-    # 学習開始ボタン
+    # 开始训练按钮
     start_train_button = ctk.CTkButton(master=main_frame, text="Start Training!", command=start_training, fg_color="chocolate1",border_color='black', border_width=3, font=("Roboto Medium", 44, "bold"), text_color='white')
     start_train_button.place(relx=0.2, rely=0.84, relwidth=0.4, relheight=0.08, anchor=ctk.CENTER)
 
-    # トレーニング進捗表示ウィンドウ
+    # 训练进度显示窗口
     output_textbox = ctk.CTkTextbox(master=main_frame, corner_radius=20, font=("Roboto Medium", 14))
     output_textbox.place(relx=0.7, rely=0.45, relwidth=0.58, relheight=0.86, anchor=ctk.CENTER)
 
-    # プログレスバー
+    # 进度条
     progress_bar = ctk.CTkProgressBar(master=main_frame, progress_color='limegreen', mode='indeterminate', indeterminate_speed=0.7)
     progress_bar.place(relx=0.5, rely=0.94, relwidth=0.7, anchor=ctk.CENTER)
 
@@ -218,11 +218,11 @@ def show_image_detection_window():
     clear_frame(main_frame)
     main_frame.pack(fill="both", expand=True)
 
-    # 検出画像表示ウィンドウの設定
+    # 检测图像显示窗口设置
     image_label = Label(main_frame)
     image_label.place(relx=0.5, rely=0.44, relwidth=0.9, relheight=0.84, anchor=ctk.CENTER)
 
-    # 画像フォルダの指定ボタンの設定
+    # 图像文件夹选择按钮设置
     select_images_folder_button = ctk.CTkButton(
         master=main_frame, 
         text="Select Image Folder", 
@@ -234,7 +234,7 @@ def show_image_detection_window():
     )
     select_images_folder_button.place(relx=0.05, rely=0.9, relwidth=0.15, relheight=0.05)
 
-    # モデル選択ボタンの設定
+    # 模型选择按钮设置
     select_model_button = ctk.CTkButton(
         master=main_frame, 
         text="Select Model", 
@@ -246,7 +246,7 @@ def show_image_detection_window():
     )
     select_model_button.place(relx=0.22, rely=0.9, relwidth=0.15, relheight=0.05)
 
-    # 物体検出開始ボタンの設定
+    # 物体检测开始按钮设置
     start_detection_button = ctk.CTkButton(
         master=main_frame, 
         text="Start Detection!", 
@@ -259,19 +259,19 @@ def show_image_detection_window():
     )
     start_detection_button.place(relx=0.42, rely=0.89, relwidth=0.18, relheight=0.07)
 
-    # 「前へ」ボタンの設定
+    # "上一张"按钮设置
     prev_button = ctk.CTkButton(master=main_frame, text="◀", command=show_prev_image, fg_color="DeepSkyBlue2", border_color='black', border_width=2, font=("Roboto Medium", 40), text_color='white')
     prev_button.place(relx=0.65, rely=0.9, relwidth=0.08, relheight=0.05)
 
-    # 「次へ」ボタンの設定
+    # "下一张"按钮设置
     next_button = ctk.CTkButton(master=main_frame, text="▶", command=show_next_image, fg_color="DeepSkyBlue2", border_color='black', border_width=2, font=("Roboto Medium", 40), text_color='white')
     next_button.place(relx=0.75, rely=0.9, relwidth=0.08, relheight=0.05)
 
-    # 画像インデックスを表示するラベルの初期化と配置
+    # 图像索引显示标签初始化和布局
     image_index_label = ctk.CTkLabel(master=main_frame, text=" ", font=("Roboto Medium", 34))
     image_index_label.place(relx=0.85, rely=0.9, relwidth=0.1, relheight=0.05)
 
-    # プログレスバーの設定
+    # 进度条设置
     detection_progress_bar = ctk.CTkProgressBar(master=main_frame, progress_color='limegreen', mode='indeterminate')
     detection_progress_bar.place(relx=0.5, rely=0.98, relwidth=0.7, anchor=ctk.CENTER)
 
@@ -283,11 +283,11 @@ def show_camera_detection_window():
 
     camera_detection = None
 
-    # Camera Stream Display
+    # 摄像头流显示
     image_label = Label(main_frame)
     image_label.place(relx=0.5, rely=0.48, relwidth=0.99, relheight=0.94, anchor=ctk.CENTER)
 
-    # Select Model Button
+    # 选择模型按钮
     select_model_button = ctk.CTkButton(
         master=main_frame, 
         text="Select Model", 
@@ -299,7 +299,7 @@ def show_camera_detection_window():
     )
     select_model_button.place(relx=0.04, rely=0.96, relwidth=0.12, relheight=0.03)
 
-    # Select Save Folder Button
+    # 选择保存文件夹按钮
     select_save_folder_button = ctk.CTkButton(
         master=main_frame, 
         text="Select Save Folder", 
@@ -311,7 +311,7 @@ def show_camera_detection_window():
     )
     select_save_folder_button.place(relx=0.175, rely=0.96, relwidth=0.12, relheight=0.03)
 
-    # Camera ID Entry
+    # 摄像头ID输入框
     camera_id_entry = ctk.CTkEntry(master=main_frame, placeholder_text="Camera ID (Ex: 0)", font=("Roboto Medium", 18))
     camera_id_entry.place(relx=0.32, rely=0.96, relwidth=0.12, relheight=0.03)
 
