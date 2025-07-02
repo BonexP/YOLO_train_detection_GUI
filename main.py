@@ -623,7 +623,7 @@ sidebar.pack(side="left", fill="y")
 
 # 功能区
 function_area = ctk.CTkFrame(master=sidebar, corner_radius=20, fg_color="#34373d")
-function_area.pack(pady=20, padx=20, fill="x")
+function_area.pack(pady=20, padx=20, fill="both", expand=True)
 
 main_frame = ctk.CTkFrame(master=root, fg_color="#23272f", corner_radius=30, border_color="#23272f", border_width=2)
 main_frame.pack(fill="both", expand=True, padx=0, pady=0)
@@ -662,11 +662,9 @@ camera_detection_button.pack(pady=20)
 app_name_label = ctk.CTkLabel(master=function_area, text="支持的模型\nYOLOv11", font=("Roboto Medium", 16))
 app_name_label.pack(pady=1)
 
-
 # 设置区
 settings_area = ctk.CTkFrame(master=sidebar, corner_radius=20, fg_color="#34373d")
 settings_area.pack(pady=20, padx=20, fill="x")
-
 
 appearance_mode_var = ctk.StringVar(value="Dark")
 appearance_mode_label = ctk.CTkLabel(master=settings_area, text="切换配色方案", font=("Roboto Medium", 16))
@@ -680,8 +678,7 @@ dark_mode_radio = ctk.CTkRadioButton(master=settings_area, text="深色", variab
                                      command=lambda: change_appearance_mode("Dark"), font=("Roboto Medium", 14))
 dark_mode_radio.pack(padx=20, pady=(5, 10), anchor='w')
 
-empty_space = ctk.CTkLabel(master=sidebar, text="")
-empty_space.pack(fill=tk.BOTH, expand=True)
+
 
 signature_label = ctk.CTkLabel(master=settings_area, text="© JUST 2025", text_color="white", font=("Roboto Medium", 10))
 signature_label.pack(side=tk.BOTTOM, fill=tk.X, padx=5, pady=5, anchor='w')
