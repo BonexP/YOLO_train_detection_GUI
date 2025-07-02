@@ -372,63 +372,84 @@ def show_camera_detection_window():
 
     camera_detection = None
 
-    # 摄像头流显示
-    image_label = Label(main_frame)
-    image_label.place(relx=0.5, rely=0.48, relwidth=0.99, relheight=0.94, anchor=ctk.CENTER)
+    # 卡片式分区
+    card = ctk.CTkFrame(master=main_frame, fg_color="#23272f", corner_radius=18)
+    card.place(relx=0.5, rely=0.5, relwidth=0.99, relheight=0.99, anchor=ctk.CENTER)
 
-    # 选择模型按钮
+    # 摄像头流显示区域（加边框和圆角）
+    image_frame = ctk.CTkFrame(master=card, fg_color="#1a1d23", corner_radius=16, border_color="#4fc3f7",
+                               border_width=2)
+    image_frame.place(relx=0.5, rely=0.45, relwidth=0.95, relheight=0.70, anchor=ctk.CENTER)
+    image_label = Label(image_frame, bg="#1a1d23")
+    image_label.pack(fill="both", expand=True)
+
+    # 底部操作区
+    button_y = 0.85
+    button_h = 0.08
+    button_w = 0.16
+    gap = 0.02
+
     select_model_button = ctk.CTkButton(
-        master=main_frame,
-        text="Select Model",
+        master=card,
+        text="选择模型",
         command=select_detection_model,
-        border_color='black',
-        border_width=2,
-        font=("Roboto Medium", 20),
+        fg_color="#1976d2",
+        hover_color="#1565c0",
+        font=("微软雅黑", 18, "bold"),
         text_color='white',
+        corner_radius=10,
+        height=44
     )
-    select_model_button.place(relx=0.04, rely=0.96, relwidth=0.12, relheight=0.03)
+    select_model_button.place(relx=0.08, rely=button_y, relwidth=button_w, relheight=button_h, anchor=ctk.W)
 
-    # 选择保存文件夹按钮
     select_save_folder_button = ctk.CTkButton(
-        master=main_frame,
-        text="Select Save Folder",
+        master=card,
+        text="选择保存文件夹",
         command=select_camera_save_folder,
-        border_color='black',
-        border_width=2,
-        font=("Roboto Medium", 20),
+        fg_color="#1976d2",
+        hover_color="#1565c0",
+        font=("微软雅黑", 18, "bold"),
         text_color='white',
+        corner_radius=10,
+        height=44
     )
-    select_save_folder_button.place(relx=0.175, rely=0.96, relwidth=0.12, relheight=0.03)
+    select_save_folder_button.place(relx=0.08 + button_w + gap, rely=button_y, relwidth=button_w, relheight=button_h,
+                                    anchor=ctk.W)
 
-    # 摄像头ID输入框
-    camera_id_entry = ctk.CTkEntry(master=main_frame, placeholder_text="Camera ID (Ex: 0)", font=("Roboto Medium", 18))
-    camera_id_entry.place(relx=0.32, rely=0.96, relwidth=0.12, relheight=0.03)
+    camera_id_entry = ctk.CTkEntry(
+        master=card,
+        placeholder_text="摄像头ID (Ex: 0)",
+        font=("微软雅黑", 18)
+    )
+    camera_id_entry.place(relx=0.08 + 2 * (button_w + gap), rely=button_y, relwidth=button_w, relheight=button_h,
+                         anchor=ctk.W)
 
-    # Start Detection Button
     start_detection_button = ctk.CTkButton(
-        master=main_frame,
-        text="START",
+        master=card,
+        text="开始检测",
         command=start_camera_detection,
-        fg_color="green",
-        border_color='black',
-        border_width=2,
-        font=("Roboto Medium", 28),
+        fg_color="#43a047",
+        hover_color="#388e3c",
+        font=("微软雅黑", 22, "bold"),
         text_color='white',
+        corner_radius=12,
+        height=50
     )
-    start_detection_button.place(relx=0.8, rely=0.96, relwidth=0.15, relheight=0.03)
+    start_detection_button.place(relx=0.78, rely=button_y, relwidth=button_w, relheight=button_h,
+                                 anchor=ctk.W)
 
     instructions_label = ctk.CTkLabel(
-        master=main_frame,
-        text="Press ENTER to capture and save detection result.",
-        font=("Roboto Medium", 14)
+        master=card,
+        text="按下 ENTER 键捕获并保存检测结果",
+        font=("微软雅黑", 16),
+        text_color="#4fc3f7"
     )
-    instructions_label.place(relx=0.6, rely=0.98, anchor=ctk.CENTER)
+    instructions_label.place(relx=0.5, rely=0.95, anchor=ctk.CENTER)
 
     root.bind('<Return>', lambda event: save_callback())
 
     image_label.update_idletasks()
     image_label.update()
-
 
 def normalize_path(path):
     if not path:
