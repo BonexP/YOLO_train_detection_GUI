@@ -636,7 +636,9 @@ ai_creation_button = ctk.CTkButton(
     border_color='black',
     border_width=2,
     corner_radius=20,
-    font=("Roboto Medium", 20))
+    font=("Roboto Medium", 20),
+    height=44
+)
 ai_creation_button.pack(pady=20)
 
 object_detection_button = ctk.CTkButton(
@@ -646,7 +648,9 @@ object_detection_button = ctk.CTkButton(
     border_color='black',
     border_width=2,
     corner_radius=20,
-    font=("Roboto Medium", 20))
+    font=("Roboto Medium", 20),
+    height=40
+)
 object_detection_button.pack(pady=20)
 
 camera_detection_button = ctk.CTkButton(
@@ -656,7 +660,9 @@ camera_detection_button = ctk.CTkButton(
     border_color='black',
     border_width=2,
     corner_radius=20,
-    font=("Roboto Medium", 20))
+    font=("Roboto Medium", 20),
+    height=40
+)
 camera_detection_button.pack(pady=20)
 
 app_name_label = ctk.CTkLabel(master=function_area, text="支持的模型\nYOLOv11", font=("Roboto Medium", 16))
