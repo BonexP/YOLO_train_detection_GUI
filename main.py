@@ -621,11 +621,15 @@ model_size_var = IntVar(value=1)
 sidebar = ctk.CTkFrame(master=root, width=380, corner_radius=30,fg_color="#2c2f33", border_color="#23272f", border_width=2)
 sidebar.pack(side="left", fill="y")
 
+# 功能区
+function_area = ctk.CTkFrame(master=sidebar, corner_radius=20, fg_color="#34373d")
+function_area.pack(pady=20, padx=20, fill="x")
+
 main_frame = ctk.CTkFrame(master=root, fg_color="#23272f", corner_radius=30, border_color="#23272f", border_width=2)
 main_frame.pack(fill="both", expand=True, padx=0, pady=0)
 
 ai_creation_button = ctk.CTkButton(
-    master=sidebar,
+    master=function_area,
     text="训练模型", command=lambda: on_sidebar_select("Train"),
     fg_color="dodgerblue",
     text_color="white",
@@ -636,7 +640,7 @@ ai_creation_button = ctk.CTkButton(
 ai_creation_button.pack(pady=20)
 
 object_detection_button = ctk.CTkButton(
-    master=sidebar, text="检测图像/视频", command=lambda: on_sidebar_select("Image/Video"),
+    master=function_area, text="检测图像/视频", command=lambda: on_sidebar_select("Image/Video"),
     fg_color="chocolate1",
     text_color="white",
     border_color='black',
@@ -646,7 +650,7 @@ object_detection_button = ctk.CTkButton(
 object_detection_button.pack(pady=20)
 
 camera_detection_button = ctk.CTkButton(
-    master=sidebar, text="相机实时检测", command=lambda: on_sidebar_select("Camera Detection"),
+    master=function_area, text="相机实时检测", command=lambda: on_sidebar_select("Camera Detection"),
     fg_color="chocolate1",
     text_color="white",
     border_color='black',
@@ -655,25 +659,31 @@ camera_detection_button = ctk.CTkButton(
     font=("Roboto Medium", 20))
 camera_detection_button.pack(pady=20)
 
-app_name_label = ctk.CTkLabel(master=sidebar, text="支持的模型\nYOLOv11", font=("Roboto Medium", 16))
+app_name_label = ctk.CTkLabel(master=function_area, text="支持的模型\nYOLOv11", font=("Roboto Medium", 16))
 app_name_label.pack(pady=1)
+
+
+# 设置区
+settings_area = ctk.CTkFrame(master=sidebar, corner_radius=20, fg_color="#34373d")
+settings_area.pack(pady=20, padx=20, fill="x")
+
+
+appearance_mode_var = ctk.StringVar(value="Dark")
+appearance_mode_label = ctk.CTkLabel(master=settings_area, text="切换配色方案", font=("Roboto Medium", 12))
+appearance_mode_label.pack(padx=10, pady=(0, 5), anchor='w')
+
+light_mode_radio = ctk.CTkRadioButton(master=settings_area, text="浅色", variable=appearance_mode_var, value="Light",
+                                      command=lambda: change_appearance_mode("Light"))
+light_mode_radio.pack(padx=10, pady=(0, 5), anchor='w')
+
+dark_mode_radio = ctk.CTkRadioButton(master=settings_area, text="深色", variable=appearance_mode_var, value="Dark",
+                                     command=lambda: change_appearance_mode("Dark"))
+dark_mode_radio.pack(padx=10, pady=(0, 10), anchor='w')
 
 empty_space = ctk.CTkLabel(master=sidebar, text="")
 empty_space.pack(fill=tk.BOTH, expand=True)
 
-appearance_mode_var = ctk.StringVar(value="Light")
-appearance_mode_label = ctk.CTkLabel(master=sidebar, text="切换配色方案", font=("Roboto Medium", 12))
-appearance_mode_label.pack(padx=10, pady=(0, 5), anchor='w')
-
-light_mode_radio = ctk.CTkRadioButton(master=sidebar, text="浅色", variable=appearance_mode_var, value="Light",
-                                      command=lambda: change_appearance_mode("Light"))
-light_mode_radio.pack(padx=10, pady=(0, 5), anchor='w')
-
-dark_mode_radio = ctk.CTkRadioButton(master=sidebar, text="深色", variable=appearance_mode_var, value="Dark",
-                                     command=lambda: change_appearance_mode("Dark"))
-dark_mode_radio.pack(padx=10, pady=(0, 10), anchor='w')
-
-signature_label = ctk.CTkLabel(master=sidebar, text="© JUST 2025", text_color="white", font=("Roboto Medium", 10))
+signature_label = ctk.CTkLabel(master=settings_area, text="© JUST 2025", text_color="white", font=("Roboto Medium", 10))
 signature_label.pack(side=tk.BOTTOM, fill=tk.X, padx=5, pady=50, anchor='w')
 
 if __name__ == "__main__":
